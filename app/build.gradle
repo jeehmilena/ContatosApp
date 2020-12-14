@@ -97,4 +97,5 @@ dependencies {
     androidTestImplementation "androidx.test:core-ktx:$core_ktx_test_version"
     androidTestImplementation "com.android.support.test.espresso:espresso-contrib:2.2"
 
+    testImplementation "io.mockk:mockk:1.9.3"
 }
