@@ -7,7 +7,7 @@ import org.hamcrest.Description
 import org.hamcrest.Matcher
 import org.hamcrest.TypeSafeMatcher
 
-class RecyclerViewMatchers (private val recyclerViewId: Int) {
+class RecyclerViewMatchers(private val recyclerViewId: Int) {
 
     fun atPosition(position: Int): Matcher<View> {
         return atPositionOnView(position, -1)
@@ -23,7 +23,7 @@ class RecyclerViewMatchers (private val recyclerViewId: Int) {
                 var idDescription = Integer.toString(recyclerViewId)
                 if (this.resources != null) {
                     try {
-                        idDescription = this.resources!!.getResourceName(recyclerViewId)
+                        idDescription = this.resources?.getResourceName(recyclerViewId).toString()
                     } catch (var4: Resources.NotFoundException) {
                         idDescription = String.format(
                             "%s (resource nomeCliente not found)",

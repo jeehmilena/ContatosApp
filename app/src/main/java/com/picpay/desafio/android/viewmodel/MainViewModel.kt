@@ -11,7 +11,7 @@ import kotlinx.coroutines.withContext
 
 class MainViewModel(
     private val ioDispatcher: CoroutineDispatcher,
-    val repository: PicPayRepository
+    private val repository: PicPayRepository
 ) : ViewModel() {
     var stateList: MutableLiveData<List<User>> = MutableLiveData()
     var error: MutableLiveData<String> = MutableLiveData()

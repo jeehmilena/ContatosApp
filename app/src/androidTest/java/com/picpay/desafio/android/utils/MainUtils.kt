@@ -15,7 +15,7 @@ object MainUtils {
             .perform(scrollToPosition<RecyclerView.ViewHolder>(pos))
     }
 
-    fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatchers {
+    private fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatchers {
         return RecyclerViewMatchers(recyclerViewId)
     }
 

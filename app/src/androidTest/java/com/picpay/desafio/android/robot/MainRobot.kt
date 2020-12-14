@@ -77,7 +77,6 @@ class MainRobot(
 
 
     fun checkScroll(): MainRobot{
-        //MainUtils.waitForElementId(R.id.recyclerView, 1)
         MainUtils.scrollToRecyclerViewLastPosition(activityTestRule.activity, R.id.recyclerView)
         MainUtils.scroll(R.id.recyclerView, 8)
         MainUtils.checkTextIsDisplayedOnRecyclerViewPosition(R.id.recyclerView, 11, "Eveline Dantas")
