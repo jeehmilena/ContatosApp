@@ -5,12 +5,14 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.picpay.desafio.android.PicPayRepository
 import com.picpay.desafio.android.model.User
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class MainViewModel : ViewModel() {
-    private val repository = PicPayRepository()
+class MainViewModel(
+    private val ioDispatcher: CoroutineDispatcher,
+    val repository: PicPayRepository
+) : ViewModel() {
     var stateList: MutableLiveData<List<User>> = MutableLiveData()
     var error: MutableLiveData<String> = MutableLiveData()
     var loading: MutableLiveData<Boolean> = MutableLiveData()
@@ -19,7 +21,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             loading.value = true
             try {
-                val usersResult = withContext(Dispatchers.IO) {
+                val usersResult = withContext(ioDispatcher) {
                     repository.getUsers()
                 }
                 stateList.value = usersResult
