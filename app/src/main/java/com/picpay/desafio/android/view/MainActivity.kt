@@ -7,17 +7,19 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
+import com.picpay.desafio.android.PicPayRepository
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.model.User
 import com.picpay.desafio.android.view.adapter.UserListAdapter
 import com.picpay.desafio.android.viewmodel.MainViewModel
+import com.picpay.desafio.android.viewmodel.MainViewModelFactory
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.Dispatchers
 
 class MainActivity : AppCompatActivity() {
     private val viewModel: MainViewModel by lazy {
-        ViewModelProvider(this).get(
-            MainViewModel::class.java
-        )
+        val factory = MainViewModelFactory(Dispatchers.IO, PicPayRepository())
+        ViewModelProvider(this, factory).get(MainViewModel::class.java)
     }
 
     private val adapter: UserListAdapter by lazy {

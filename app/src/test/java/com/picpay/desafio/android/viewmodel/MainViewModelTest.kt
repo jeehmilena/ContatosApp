@@ -7,20 +7,22 @@ import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.impl.annotations.MockK
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.runBlockingTest
 import kotlinx.coroutines.test.setMain
-import org.junit.*
+import org.junit.After
 import org.junit.Assert.assertEquals
-import org.mockito.Mock
-import org.mockito.Mockito
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 
 class MainViewModelTest {
     @get:Rule
     val instantExecutorRule = InstantTaskExecutorRule()
 
+    @ExperimentalCoroutinesApi
     private val testCoroutineDispatcher = TestCoroutineDispatcher()
 
     @MockK
@@ -28,6 +30,7 @@ class MainViewModelTest {
 
     lateinit var viewModel: MainViewModel
 
+    @ExperimentalCoroutinesApi
     @Before
     fun setup() {
         Dispatchers.setMain(Dispatchers.Unconfined)
@@ -39,6 +42,7 @@ class MainViewModelTest {
         viewModel = MainViewModel(testCoroutineDispatcher, repository)
     }
 
+    @ExperimentalCoroutinesApi
     @After
     fun tearDown() {
         testCoroutineDispatcher.cleanupTestCoroutines()
