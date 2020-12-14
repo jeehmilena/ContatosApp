@@ -12,14 +12,12 @@ import com.picpay.desafio.android.PicPayAPI
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.utils.MainUtils
 import com.picpay.desafio.android.view.MainActivity
-import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.mockwebserver.Dispatcher
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okhttp3.mockwebserver.RecordedRequest
 import java.io.IOException
 import java.io.InputStream
-
 
 class MainRobot(
     private val mockWebServer: MockWebServer?,
@@ -79,10 +77,10 @@ class MainRobot(
 
 
     fun checkScroll(): MainRobot{
-        MainUtils.waitForElementId(R.id.recyclerView, 1)
+        //MainUtils.waitForElementId(R.id.recyclerView, 1)
         MainUtils.scrollToRecyclerViewLastPosition(activityTestRule.activity, R.id.recyclerView)
         MainUtils.scroll(R.id.recyclerView, 8)
-        MainUtils.checkTextIsDisplayedOnRecyclerViewPosition(R.id.recyclerView, 31, "Galileo Explores Europa")
+        MainUtils.checkTextIsDisplayedOnRecyclerViewPosition(R.id.recyclerView, 11, "Eveline Dantas")
 
         return this
     }
