@@ -36,7 +36,8 @@ class MainViewModelTest {
         Dispatchers.setMain(Dispatchers.Unconfined)
 
         MockKAnnotations.init(this, relaxUnitFun = true)
-        val user = getUser()
+        val user = getUserMock()
+
         coEvery { repository.getUsers() } returns (listOf(user))
 
         viewModel = MainViewModel(testCoroutineDispatcher, repository)
@@ -57,7 +58,7 @@ class MainViewModelTest {
         assertEquals("Eduardo Santos", viewModel.stateList.value?.get(0)?.name)
     }
 
-    private fun getUser()= User(
+    private fun getUserMock()= User(
     "teste", "Eduardo Santos", 1, "@eduardo.santos"
     )
 }
