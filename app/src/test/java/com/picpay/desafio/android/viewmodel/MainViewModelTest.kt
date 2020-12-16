@@ -50,7 +50,7 @@ class MainViewModelTest {
     }
 
     @Test
-    fun testGetListApod() {
+    fun testGetListContatos() {
         runBlocking {
             viewModel.getListUsers()
         }
