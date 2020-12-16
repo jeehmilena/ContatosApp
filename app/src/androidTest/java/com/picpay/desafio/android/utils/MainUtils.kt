@@ -7,6 +7,7 @@ import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions.scrollToPosition
 import androidx.test.espresso.matcher.ViewMatchers.*
+import com.picpay.desafio.android.R
 
 object MainUtils {
 
@@ -22,6 +23,11 @@ object MainUtils {
     fun checkTextIsDisplayedOnRecyclerViewPosition(id: Int, position: Int, text: String) {
         onView(withRecyclerView(id).atPosition(position))
             .check(matches(hasDescendant(withText(text))))
+    }
+
+    fun checkRecyclerView(recyclerViewId: Int) {
+        onView(withId(recyclerViewId))
+            .check(matches(isDisplayed()))
     }
 
     fun scrollToRecyclerViewLastPosition(

@@ -2,10 +2,6 @@ package com.picpay.desafio.android.robot
 
 import android.content.Context
 import android.content.Intent
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
-import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import com.picpay.desafio.android.PicPayAPI
@@ -70,16 +66,20 @@ class MainRobot(
         activityTestRule.finishActivity()
     }
 
-    fun checkIsDisplayedRecyclerView() {
-        onView(withId(R.id.recyclerView))
-            .check(matches(isDisplayed()))
+    fun checkIsDisplayedRecyclerView(): MainRobot {
+        MainUtils.checkRecyclerView(R.id.recyclerView)
+        return this
     }
 
 
-    fun checkScroll(): MainRobot{
+    fun checkScroll(): MainRobot {
         MainUtils.scrollToRecyclerViewLastPosition(activityTestRule.activity, R.id.recyclerView)
         MainUtils.scroll(R.id.recyclerView, 8)
-        MainUtils.checkTextIsDisplayedOnRecyclerViewPosition(R.id.recyclerView, 11, "Eveline Dantas")
+        MainUtils.checkTextIsDisplayedOnRecyclerViewPosition(
+            R.id.recyclerView,
+            11,
+            "Eveline Dantas"
+        )
 
         return this
     }
